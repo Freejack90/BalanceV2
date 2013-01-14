@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<levels>
+	<level name="Tutorial 1">
+		<static>
+			<object x="50" y="90" type="rect_m" angle="0" />
+		</static>
+		<dynamic>
+			<object angle="50" type="cube_m" />
+			<object angle="50" type="cube_m" />
+			<object angle="50" type="rect_m" />
+			<object angle="50" type="triangle_m" />
+			<object angle="50" type="triangle_m" />
+			<object angle="50" type="circle_m" />			
+		</dynamic>
+	</level>
+	<level name="Level 1">
+		<static>
+			<object x="50" y="90" type="cube_l" angle="0" />
+		</static>
+		<dynamic>
+			<object angle="0" type="cube_s" />
+			<object angle="0" type="cube_m" />
+			<object angle="0" type="cube_l" />
+			<object angle="0" type="rect_s" />
+			<object angle="0" type="rect_m" />		
+			<object angle="0" type="rect_l" />	
+		</dynamic>
+	</level>
+	
+	
+<level>
+	<static>
+		<object x='73' y='92' angle='0' type='cube_m' />
+		<object x='27' y='92' angle='0' type='cube_m' />
+	</static>
+	<dynamic>
+		<object  id='3' angle='0' type='rect_l' />
+		<object  id='4' angle='0' type='cube_m' />
+		<object  id='5' angle='0' type='cube_m' />
+		<object  id='6' angle='0' type='circle_l' />
+	</dynamics>
+</level>
+<level>
+	<static>
+		<object x='73' y='58' angle='316' type='rect_m' />
+		<object x='53' y='70' angle='0' type='triangle_m' />
+		<object x='34' y='70' angle='0' type='triangle_m' />
+		<object x='40' y='39' angle='33' type='rect_m' />
+	</static>
+	<dynamic>
+		<object  id='5' angle='0' type='cube_l' />
+		<object  id='6' angle='0' type='circle_m' />
+		<object  id='7' angle='0' type='circle_m' />
+		<object  id='8' angle='0' type='circle_m' />
+	</dynamics>
+</level>
+<level>
+	<static>
+		<object x='70' y='84' angle='270' type='rect_m' />
+		<object x='31' y='74' angle='270' type='rect_m' />
+	</static>
+	<dynamic>
+		<object  id='3' angle='0' type='cube_s' />
+		<object  id='4' angle='0' type='cube_l' />
+		<object  id='5' angle='0' type='cube_m' />
+		<object  id='6' angle='0' type='triangle_l' />
+		<object  id='7' angle='0' type='triangle_l' />
+		<object  id='8' angle='0' type='rect_l' />
+		<object  id='9' angle='0' type='circle_l' />
+		<object  id='10' angle='0' type='circle_l' />
+		<object  id='11' angle='0' type='rect_m' />
+		<object  id='12' angle='0' type='triangle_m' />
+	</dynamics>
+</level>
+<level>
+	<static>
+		<object x='48' y='74' angle='0' type='circle_s' />
+		<object x='20' y='87' angle='0' type='circle_s' />
+		<object x='57' y='83' angle='0' type='circle_s' />
+	</static>
+	<dynamic>
+		<object  id='4' angle='0' type='rect_s' />
+		<object  id='5' angle='0' type='rect_m' />
+		<object  id='6' angle='0' type='cube_m' />
+		<object  id='7' angle='0' type='triangle_s' />
+		<object  id='8' angle='0' type='cube_s' />
+		<object  id='9' angle='0' type='cube_s' />
+		<object  id='10' angle='0' type='cube_s' />
+		<object  id='11' angle='0' type='cube_s' />
+		<object  id='12' angle='0' type='triangle_s' />
+	</dynamics>
+</level>	
+
+<level>
+	<static>
+		<object x='61' y='70' angle='224' type='triangle_s' />
+		<object x='34' y='56' angle='0' type='cube_s' />
+		<object x='81' y='88' angle='0' type='cube_m' />
+		<object x='81' y='81' angle='0' type='circle_s' />
+		<object x='41' y='57' angle='224' type='triangle_s' />
+		<object x='51' y='64' angle='224' type='triangle_s' />
+		<object x='73' y='76' angle='224' type='triangle_s' />
+		<object x='46' y='88' angle='0' type='cube_m' />
+	</static>
+	<dynamic>
+		<object  id='9' angle='0' type='rect_s' />
+		<object x='0' y='0' angle='0' type='triangle_s' />
+		<object x='0' y='0' angle='0' type='triangle_s' />
+		<object  id='12' angle='0' type='circle_s' />
+		<object  id='13' angle='0' type='rect_l' />
+		<object  id='14' angle='0' type='rect_l' />
+		<object  id='15' angle='0' type='triangle_l' />
+		<object  id='16' angle='0' type='cube_m' />
+		<object  id='17' angle='0' type='triangle_s' />
+	</dynamics>
+</level>
+</levels>
