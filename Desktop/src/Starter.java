@@ -10,6 +10,6 @@ public class Starter {
         cfg.height = 800;
         cfg.useGL20 = false;
         new LwjglApplication(new AndroidGame(), cfg);
-        //Git
+        //Git Hub
     }
 }
