@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 public class LevelManager {	
 	//Private vars
 	private String filepath;
-	private int level = 5;
+	private int level = 0;
     private int levelCount = 0;
 
 	private int countDyn = 0;
@@ -18,12 +18,12 @@ public class LevelManager {
 	
 	LevelManager(String path) {
 		this.filepath = path;
-		map = new LevelMap();
 		parseFile();
 	}
 	
 	private void parseFile() {
 		//File Reading
+        map = new LevelMap();
 		XmlReader reader = new XmlReader();
 		Element root = reader.parse(Gdx.files.internal(this.filepath).readString());
         this.levelCount = root.getChildCount();
@@ -66,12 +66,14 @@ public class LevelManager {
 	public ArrayList<ObjectType> getObjects(int type) { return map.get(type); }
 
     public void setLevel(int level) {
-        if (this.levelCount <= level && level >= 0)
+
+        if (level < this.levelCount && level >= 0)
             this.level = level;
         else this.level = 0;
         parseFile();
+        System.out.print(this.levelCount);
     }
-
+    public int getLevelCount(){return this.levelCount;}
     public int getLevel(){return this.level;}
     public void nextLevel() {
         this.setLevel(this.level+1);

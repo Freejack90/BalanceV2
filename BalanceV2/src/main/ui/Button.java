@@ -74,4 +74,7 @@ public class Button {
 	}
 
 
+    public String getText() {
+        return text;
+    }
 }

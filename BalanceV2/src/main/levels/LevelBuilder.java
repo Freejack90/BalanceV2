@@ -23,28 +23,44 @@ public class LevelBuilder extends AbstractScreen{
 	private int clickTimes = 0;
 	private Sprite currentSprite;
     private Button resetBtn;
-    private Button nextBtn;
+    private Button exitBtn;
 
-	public void create(AndroidGame game) {
-		super.create(game);
+    public LevelBuilder(int level) {
+        super();
+        init(level);
+    }
+    private void init(int level) {
+        manager = new LevelManager("data/levels.xml");
+        trace(level);
+        manager.setLevel(level);
+    }
+    public LevelBuilder() {
+        init(0);
+    }
+
+    public void create(AndroidGame game) {
+        super.create(game);
         resetBtn = new Button(100, 100, "Reset");
-        nextBtn = new Button(100, 50, "Next");
-
+        exitBtn = new Button(100, 50, "Exit");
 		trace("LevelBuilder");
-		manager = new LevelManager("data/levels.xml");
 		world = new World(new Vector2(0,-15), true);
 		//render = new Box2DDebugRenderer();
 //		mtx.setToOrtho2D(0, 0, screenWidth/ModelHelper.meters, screenHeight/ModelHelper.meters);
 		//Creating static objects
+        destroyBodies();
         createStatics();
+
 	}
 
     public void createStatics() {
+
         Iterator<ObjectType> statics = manager.getObjects(ObjectType.STATICS).iterator();
         while (statics.hasNext()) {
             ObjectType stat = statics.next();
             ModelHelper.create(world, ObjectType.STATICS, stat);
         }
+
+        System.out.print(manager.getCount(ObjectType.STATICS));
     }
 	
 	public void render() {
@@ -55,7 +71,7 @@ public class LevelBuilder extends AbstractScreen{
 			drawBar();
 			drawBodies();
             resetBtn.draw(batch);
-            nextBtn.draw(batch);
+            exitBtn.draw(batch);
 			if(currentSprite != null) 
 				currentSprite.draw(batch);		
 		batch.end();
@@ -68,7 +84,7 @@ public class LevelBuilder extends AbstractScreen{
 	}
 	
 	private void onTouchAndMove() {
-		if(clickTimes < manager.getCount(ObjectType.DYNAMICS) && !resetBtn.hitTest() && !nextBtn.hitTest()){
+		if(clickTimes < manager.getCount(ObjectType.DYNAMICS) && !resetBtn.hitTest() && !exitBtn.hitTest()){
 			if(Gdx.input.justTouched()){					
 				currentSprite = ModelHelper.getSprite(
 									manager.getObjects(ObjectType.DYNAMICS)
@@ -93,20 +109,22 @@ public class LevelBuilder extends AbstractScreen{
             destroyBodies();
             createStatics();
         }
-        if (Gdx.input.justTouched() && nextBtn.hitTest()) {
+        if (Gdx.input.justTouched() && exitBtn.hitTest()) {
             clickTimes = 0;
-            manager.nextLevel();
-            trace(manager.getLevel());
-            destroyBodies();
-            createStatics();
+            this.curGame.setLevel(new IntroScreen());
+            //destroyBodies();
         }
 	}
 
     private void destroyBodies() {
         Iterator<Body> bodies = world.getBodies();
-        while (bodies.hasNext()) {
-            world.destroyBody(bodies.next());
-        }
+            while (bodies.hasNext()) {
+                Body curBody = bodies.next();
+                if(curBody != null){
+                    world.destroyBody(curBody);
+                }
+            }
+
     }
 
     private void changePosition(){
@@ -139,15 +157,15 @@ public class LevelBuilder extends AbstractScreen{
 		Iterator<Body> bodies = world.getBodies();		
 		while(bodies.hasNext()){			
 			Body curBody = bodies.next();
-			Sprite bodySprite = (Sprite)curBody.getUserData();
-			bodySprite.setPosition(curBody.getPosition().x*ModelHelper.meters-bodySprite.getWidth()/2, curBody.getPosition().y*ModelHelper.meters-bodySprite.getHeight()/2);
-			bodySprite.setRotation((float)Math.toDegrees(curBody.getAngle()));
-			bodySprite.draw(batch);
-            if((curBody.getPosition().y) < 0){
-
-             clickTimes = 0;
-             world.destroyBody(curBody);
-
+            if(curBody != null){
+                Sprite bodySprite = (Sprite)curBody.getUserData();
+                bodySprite.setPosition(curBody.getPosition().x*ModelHelper.meters-bodySprite.getWidth()/2, curBody.getPosition().y*ModelHelper.meters-bodySprite.getHeight()/2);
+                bodySprite.setRotation((float)Math.toDegrees(curBody.getAngle()));
+                bodySprite.draw(batch);
+                if((curBody.getPosition().y) < 0){
+                    trace("YOU LOSE!!!!");
+                    this.curGame.setLevel(new IntroScreen());
+                }
             }
 		}
 	}

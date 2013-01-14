@@ -17,7 +17,7 @@ public class AndroidGame implements ApplicationListener {
 	@Override
 	public void create() {	
 		System.out.println("AndroidGame");
-		setLevel(new LevelBuilder());
+		setLevel(new IntroScreen());
 	}
 
 	@Override

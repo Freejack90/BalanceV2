@@ -26,7 +26,7 @@ public class ModelHelper {
 		}
 	}
 	
-	public static void createRect(World world, Point size, String stringType, int type, int angle, Point position) {		
+	public static void createRect(World world, Point size, String stringType, int type, int angle, Point position) {
 		//Shape
 		PolygonShape shape = new PolygonShape();
 		shape.setAsBox((float)size.x/meters/2, (float)size.y/meters/2);
@@ -34,7 +34,7 @@ public class ModelHelper {
 		//BodyDef
 		BodyDef bd = new BodyDef();		
 		bd.angle = MathUtils.degreesToRadians * (-angle);
-		bd.position.set(position.x/meters, position.y/meters);
+		bd.position.set((float)position.x /meters, (float)position.y/meters);
 		//Type
 		if(type == ObjectType.STATICS)
 			bd.type = BodyType.StaticBody;
@@ -66,7 +66,7 @@ public class ModelHelper {
 		float setAngle = MathUtils.degreesToRadians*(-angle);
 		bd.angle = setAngle;
 		//bd.linearDamping = 1f;
-		bd.position.set(position.x/meters, position.y/meters);
+		bd.position.set((float)(position.x/meters), (float)(position.y/meters));
 		if(type == ObjectType.STATICS){
 			bd.type = BodyType.StaticBody;
 		}else{
@@ -87,7 +87,7 @@ public class ModelHelper {
 		CircleShape shape = new CircleShape();
 		shape.setRadius((float)radius/meters/2);
 		BodyDef bd = new BodyDef();
-		bd.position.set(position.x/meters, position.y/meters);
+		bd.position.set((float)(position.x/meters), (float)(position.y/meters));
 		if(type == ObjectType.STATICS){
 			bd.type = BodyType.StaticBody;
 		}else{
