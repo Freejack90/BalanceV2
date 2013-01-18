@@ -23,6 +23,7 @@ public class SelectLevel extends AbstractScreen{
     private int formOffsetX = 100;
     private int formOffsetY = 400;
 
+
     public void create(AndroidGame game) {
         super.create(game);
         trace("SelectLevels");
@@ -47,7 +48,7 @@ public class SelectLevel extends AbstractScreen{
              if (Gdx.input.justTouched()) {
                 if (btn.hitTest()) {
                     trace(Integer.parseInt(btn.getText()));
-                    this.curGame.setLevel(new LevelBuilder(Integer.parseInt(btn.getText())));
+                    this.curGame.setLevel(new LevelBuilder(Integer.parseInt(btn.getText())-1));
                 }
              }
         }

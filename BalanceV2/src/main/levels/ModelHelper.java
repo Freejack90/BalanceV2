@@ -65,11 +65,13 @@ public class ModelHelper {
 		BodyDef bd = new BodyDef();
 		float setAngle = MathUtils.degreesToRadians*(-angle);
 		bd.angle = setAngle;
+
 		//bd.linearDamping = 1f;
-		bd.position.set((float)(position.x/meters), (float)(position.y/meters));
+		bd.position.set((float)position.x/meters, (float)position.y/meters);
+        System.out.print((float)(position.x/meters));
 		if(type == ObjectType.STATICS){
-			bd.type = BodyType.StaticBody;
-		}else{
+            bd.type = BodyType.StaticBody;
+        }else{
 			bd.type = BodyType.DynamicBody;
 		}
 		Body body = world.createBody(bd);
@@ -87,7 +89,7 @@ public class ModelHelper {
 		CircleShape shape = new CircleShape();
 		shape.setRadius((float)radius/meters/2);
 		BodyDef bd = new BodyDef();
-		bd.position.set((float)(position.x/meters), (float)(position.y/meters));
+		bd.position.set((float)position.x/meters, (float)position.y/meters);
 		if(type == ObjectType.STATICS){
 			bd.type = BodyType.StaticBody;
 		}else{
